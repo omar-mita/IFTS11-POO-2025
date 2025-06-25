@@ -6,7 +6,7 @@ class Perro(models.Model):
     nombre = models.CharField(max_length=100)
     raza = models.CharField(max_length=100)
     edad = models.IntegerField()
-    tamaño = models.CharField(max_length=50)
+    tamano = models.CharField(max_length=50)
     peso = models.FloatField()
     estado_salud = models.CharField(max_length=100)
     vacunado = models.BooleanField(default=False)
@@ -28,6 +28,7 @@ class Perro(models.Model):
 
     def __str__(self):
         return f"{self.nombre} ({self.raza}) - Estado: {self.estado}"
+    
 class Galgo(Perro):
     def mostrar_informacion(self):
         base = super().mostrar_informacion()
@@ -41,6 +42,7 @@ class UsuarioAdoptante(models.Model):
     preferencias_edad = models.PositiveIntegerField(null=True, blank=True)
     preferencias_tamano = models.CharField(max_length=50, blank=True)
     historial_adopciones = models.ManyToManyField(Perro, blank=True)
+    
     @classmethod
     def registrarse(cls, nombre, dni, email, raza_pref=None, edad_pref=None, tamano_pref=None):
         return cls.objects.create(
