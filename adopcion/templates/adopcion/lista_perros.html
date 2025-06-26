@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Perros</title>
+</head>
+<body>
+    <h1>Perros en adopción</h1>
+    <ul>
+        {% for perro in perros %}
+            <li>{{ perro.nombre }} ({{ perro.raza }}) - Estado: {{ perro.estado }}</li>
+        {% empty %}
+            <li>No hay perros disponibles.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
